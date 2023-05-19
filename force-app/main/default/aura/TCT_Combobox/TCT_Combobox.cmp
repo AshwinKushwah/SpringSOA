@@ -1,0 +1,54 @@
+<aura:component controller="TCT_ComboBoxController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	
+	<aura:attribute name="objectName" type="String" default="Account"/>
+    <aura:attribute name="fieldName" type="String" default="Name"/>
+    <aura:attribute name="selectRecordId" type="String"/>
+    <aura:attribute name="selectRecordName" type="String"/>
+    <aura:attribute name="Label" type="String" />
+     <aura:attribute name="customPicklistValues" type="String[]"/>
+    <aura:attribute name="picklistValues" type="String[]"/>
+    <aura:attribute name="allListValues" type="String[]"/>
+    <aura:attribute name="required" type="Boolean" default="false"/>
+    <aura:attribute name="iconName" type="String" default="utility:identity"/>
+    <aura:attribute name="LoadingText" type="Boolean" default="false"/>
+    <aura:attribute name="readonly" type="Boolean" default="false"/>
+    <aura:attribute name="helpText" type="String" />
+    <aura:attribute name="stringField" type="String" />
+    
+    <div onfocusout="{!c.closeDropDown}">         
+        <div class="slds-combobox_container slds-size--1-of-1 slds-p-horizontal_x-small">
+            <div class="slds-size--1-of-1 slds-p-horizontal_x-small slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aura:id="resultBox" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                <div class="slds-form-element__control" role="none">
+                    <aura:if isTrue="{!v.readonly}">
+                        <lightning:input required="{!v.required}" disabled="{!v.readonly}" aura:id="userinput" label="{!v.Label}" name="searchText" value="{!v.selectRecordName}" fieldLevelHelp="{!v.helpText}" class="leftspace"/>
+                        <aura:set attribute = "else">                
+                            <lightning:input required="{!v.required}" disabled="{!v.readonly}" aura:id="userinput" label="{!v.Label}" name="searchText" onchange="{!c.searchField}" onclick="{!c.getPickListValues}" value="{!v.selectRecordName}" isLoading="{!v.LoadingText}" type="search" fieldLevelHelp="{!v.helpText}" class="leftspace"/></aura:set>
+                    </aura:if>
+                    
+                </div>
+                <div id="listbox-id-1" class="slds-m-left_medium slds-dropdown  slds-dropdown_fluid" role="listbox">
+                    <ul class="slds-listbox slds-listbox_vertical" role="presentation" >
+                        <aura:iteration items="{!v.picklistValues}" var="serecord" indexVar="hdtv">
+                            <li role="presentation" class="slds-listbox__item">
+                               
+                                <div data-name="{!serecord}" onmousedown="{!c.setSelectedRecord}"  class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                    <span class="slds-media__figure">
+                                        <span class="slds-icon_container slds-icon-standard-account">
+                                          
+                                        </span>
+                                    </span>
+                                    <span class="slds-media__body">
+                                        <span class="slds-listbox__option-text slds-listbox__option-text_entity">{!serecord}</span>
+                                    </span>
+                                </div>
+                            </li>
+                        </aura:iteration>
+                        <aura:if isTrue="{!v.LoadingText}">
+                            Loading...
+                        </aura:if>
+                    </ul>
+                </div>
+            </div>                                          
+        </div>
+    </div>      
+</aura:component>

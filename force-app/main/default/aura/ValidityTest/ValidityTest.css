@@ -1,0 +1,8 @@
+.THIS.customRadioCls .slds-form-element__control .slds-radio{
+    display : inline-block !important;
+}
+.THIS.sf_style .slds-form-element__legend{
+    color: rgb(62, 62, 60);
+    font-size: 0.75rem;
+    font-weight: NORMAL;
+}

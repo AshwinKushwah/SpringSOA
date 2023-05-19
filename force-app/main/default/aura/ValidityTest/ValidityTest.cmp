@@ -1,0 +1,24 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:method name="validate" action="{!c.validate}" />
+    <aura:method name="populateAns" action="{!c.populateAns}" access="public" /> 
+     
+    <aura:attribute name="selValue" type="String" default=""/>
+    <aura:attribute name="options" type="List" default="[{'label':'Yes', 'value':'Yes'},
+                                                         {'label':'No', 'value':'No'}]"/>
+    <aura:attribute name="isRequired" type="Boolean" default="false"/>
+    
+    
+    
+    <lightning:radioGroup name="inputGroup" aura:id="myinput" label="Recommendation consistent with binder optimization guidelines?"  
+                              class="customRadioCls sf_style"
+                              options="{!v.options}"  
+                              value="{! v.selValue}"  
+                              type="radio"  
+                              
+                           	  required="{!v.isRequired}"/>
+    <lightning:button variant="brand" label="Brand" title="Brand action" onclick="{!c.handleClick}" />
+    
+</aura:component>

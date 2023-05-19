@@ -1,0 +1,16 @@
+<apex:page docType="html-5.0">
+    <apex:stylesheet value="//cdn.jsdelivr.net/webjars/bootstrap-sf1/0.1.0-beta.6/css/bootstrap-namespaced.css"/>
+    <apex:includeScript value="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"/>
+    <script>
+        angular.module("ngApp",[]);
+    </script>
+    <div class="bootstrap" ng-app = "ngApp">
+        <form>
+            <label>Name</label>
+            <input type="text" ng-model="YourName"/>
+             <h1>
+                 Hello {{YourName}}
+            </h1>
+        </form>
+    </div>
+</apex:page>

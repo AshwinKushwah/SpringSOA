@@ -1,0 +1,31 @@
+<apex:page standardController="Book__c" recordSetVar="books">
+    <apex:pageBlock title="Books here!">
+        
+        <apex:pageBlockTable value="{!books}" var="b">
+            <apex:column headerValue="Name of the book " value="{!b.Title__c}"/>
+             <apex:column value="{!b.Author__c}"/> 
+            	<apex:column value="{!b.Quantity__c}"/> 
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    <apex:form >
+        <apex:selectList value="{!filterid}" size="1">
+            <apex:selectOptions value="{!listviewoptions}"/>
+            <apex:commandButton value="Go" action="{!list}"/>
+        </apex:selectList>
+        <br/>
+        <p align="center">
+            
+        
+        <span>
+        <apex:commandLink action="{!previous}">
+            Previous
+        </apex:commandLink>
+            </span>
+        <span>
+        <apex:commandLink action="{!next}">
+            Next
+        </apex:commandLink>
+        </span>
+        </p>
+    </apex:form>
+</apex:page>

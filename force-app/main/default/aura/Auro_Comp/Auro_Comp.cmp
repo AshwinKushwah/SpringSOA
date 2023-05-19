@@ -1,0 +1,10 @@
+<aura:component >
+	<aura:attribute name='userNames' type='list' default="['Sachin', 'Sehwag', 'Test UserName']"></aura:attribute>
+    <h2>List Items!</h2>
+    
+ <!--   <p><c:GreetPersonComp userName='{!v.userNames[0]}'></c:GreetPersonComp></p> -->
+    
+   <c:GreatPersonComp userName='{!v.userNames[0]}'></c:GreatPersonComp>
+   <c:GreatPersonComp userName='{!v.userNames[1]}'></c:GreatPersonComp>
+    <p><c:GreatPersonComp testAttribute='{!v.userNames[2]}'></c:GreatPersonComp> </p>
+</aura:component>

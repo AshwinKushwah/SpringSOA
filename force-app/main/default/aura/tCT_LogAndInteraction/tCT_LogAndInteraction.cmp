@@ -1,0 +1,156 @@
+<aura:component controller="tCT_LogAnInteractionController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<aura:attribute name="recordId" type="String"/> 
+    <aura:attribute name="logInteractionDetails" type="tCT_LogAnInteractionController" />
+    <aura:attribute name="focusAreaNames" type="List"/>
+    <aura:attribute name="relatedMatrices" type="List"/>
+    <aura:attribute name="statusPicklistVal" type="String[]"/>
+    <aura:attribute name="StringValue1" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="slds-p-around_small">
+                        <!-- <div class="slds-card_boundary">-->
+                        <div class="slds-section slds-is-open">
+                            <!--h3 class="slds-section__title">
+                                <button aria-controls="expando-unique-id" aria-expanded="true"
+                                        class="slds-button slds-section__title-action">
+                                    <span class="slds-truncate" title="Section Title">Define New Focus Area</span>
+                                </button>
+                            </h3-->
+                            <div aria-hidden="false"  id="expando-unique-id">
+                                <div class="slds-form" >
+                                    <div class="slds-form__row">
+                                        <div class="slds-size_1-of-1 " role="listitem">
+                                            <div class="">
+                                                <lightning:select class="slds-box_x-small slds-m-around_x-small"
+                                                              label="Interaction Type" value='{!v.focusDetails.finalWrapper.fwStatus}'
+                                                              required="true">
+                                                <aura:if isTrue="{!v.focusDetails.fAWrapper.statusList.length > 1}">
+                                                    <option value="">---Select One---</option>
+                                                </aura:if>
+                                                <aura:iteration items="{!v.focusDetails.fAWrapper.statusList}" var="visit">
+                                                    <option value="{!visit.Id}" text="{!visit.Name}"> </option>
+                                                </aura:iteration>
+                                            </lightning:select>
+                                            </div>
+                                        </div>
+                                        
+                                            <div class="slds-size_1-of-1 " role="listitem">
+                                            <div class="">
+                                                <!--Combobox with free edit text field -->
+                                         <!--       <c:tCT_ComboboxFreeText displayLabel="Contacted" displayList="{1,2,3}"/> -->
+                                                <!-- 
+                                                <lightning:select class="slds-box_x-small slds-m-around_x-small"
+                                                              label="Contacted" value='{!v.logInteractionDetails.finalTaskWrapper.itrContacted}'
+                                                              required="true">
+                                                <aura:if isTrue="{!v.logInteractionDetails.taskWrapper.ContactedList.length > 1}">
+                                                    <option value="">Select One</option>
+                                                </aura:if>
+                                                <aura:iteration items="{!v.logInteractionDetails.taskWrapper.ContactedList}" var="contacted">
+                                                    <option value="{!contacted.Id}" text="{!contacted.Name}"> </option>
+                                                </aura:iteration>
+                                            </lightning:select> -->
+                                            </div>
+                                        </div>
+                                        
+                                        <!--div class=" slds-size_1-of-1  " role="listitem">
+                                                <lightning:input class="slds-box_x-small slds-m-top_x-small slds-m-horizontal_small" 
+                                                                 type="text" 
+                                                                 name="input23"
+                                                                 aura:id="fieldId"
+                                                                 label="If Other, please specify :" 
+                                                                 value="{!v.focusDetails.finalWrapper.otherFwName}"
+                                                                 maxlength="250" 
+                                                                  />
+                                            </div-->
+                                    
+                                    
+                                        <div class=" slds-size_1-of-1  " role="listitem">
+                                            <lightning:input class="slds-box_x-small slds-m-top_x-small slds-m-horizontal_small" type="text" name="input23" label="Subject" value="{!v.focusDetails.finalWrapper.fwCurrentState}" maxlength="250" required="true"/>
+                                        </div>
+                                    
+                                        <div class="slds-size_1-of-1 " role="listitem">
+                                            <lightning:textarea  class=" slds-box_x-small slds-m-top_x-small slds-m-horizontal_small" name="input2" value="{!v.focusDetails.finalWrapper.fwNotes}" label="Comments/Note" maxlength="2500" />
+                                            <aura:if isTrue="{!v.focusDetails.finalWrapper.fwNotes.length > 0}">
+                                                <span class="slds-m-bottom_small slds-m-right_small slds-float--right" >{!2500-v.focusDetails.finalWrapper.fwNotes.length} character(s) remaining</span>
+                                                <aura:set attribute="else">
+                                                    <span class="slds-m-bottom_small slds-m-right_small slds-float--right"> 2500 character(s) remaining </span>
+                                                </aura:set>
+                                            </aura:if>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Add Attachment section-->
+                                <h4 class="slds-section__title">
+                                    <span class="slds-truncate" title="Section Title">Additional Info</span>
+                            	</h4>
+                                <p>
+                                    <span>Add any related Attachment</span>
+                                </p>
+                                <div class="slds-form-element__control">    
+                 					<lightning:fileUpload label="Upload File" multiple="true"   aura:id="multifileUpload" />
+            					</div>
+                                <!-- End of Add Attchment section -->
+                                
+                                <div class=" slds-size_1-of-1  " role="listitem">
+                                    <lightning:input class="slds-box_x-small slds-m-top_x-small slds-m-horizontal_small" type="text" name="input23" label="Completed by/Assigned to" value="{!v.focusDetails.finalWrapper.fwCurrentState}" maxlength="250" required="true"/>
+                                </div>
+                                
+                                <div class="">
+                                    <label class="slds-form-element__label">Related Focus Area</label>
+
+                                    <!--MultiSelect PickList Start-->
+                                <!--    <c:tCT_MultiSelectPicklistForLogInteraction PickLabel=" " MulPickList="{!v.focusAreaNames}" focusDetails="{!v.focusDetails}" MarkedValues=""/> -->
+
+                                     <!--
+                                    <lightning:select class="slds-box_x-small slds-m-around_x-small"
+                                                      aura:id="fieldId" value='{!v.focusDetails.finalWrapper.fwName}'
+                                                      label="Related Focus Area" >
+                                        
+                                        <aura:iteration items="{!v.focusDetails.fAWrapper.FAList}" var="visit">
+                                            <option value="{!visit.Id}" text="{!visit.Name}"> </option>
+                                        </aura:iteration>
+                                    </lightning:select>   -->
+                                </div>
+                                
+                                <div class="">
+                                    <label class="slds-form-element__label">Related Metric</label>
+
+                                    <!-- MutliSelect PickList for Related Matric -->
+                                <!--    <c:tCT_MultiSelectPicklistForLogInteraction PickLabel=" " MulPickList="{!v.relatedMatrices}" focusDetails="{!v.focusDetails}" MarkedValues=""/> -->
+
+                                    <!--
+                                    <lightning:select class="slds-box_x-small slds-m-around_x-small"
+                                                      aura:id="fieldId" value='{!v.focusDetails.finalWrapper.fwName}'
+                                                      label="Related Metric" >
+                                        
+                                        <aura:iteration items="{!v.focusDetails.fAWrapper.FAList}" var="visit">
+                                            <option value="{!visit.Id}" text="{!visit.Name}"> </option>
+                                        </aura:iteration>
+                                    </lightning:select>
+										-->
+                                </div>
+                                
+                                <div class=" slds-size_1-of-1  " role="listitem">
+                                    <lightning:input class="slds-box_x-small slds-m-top_x-small slds-m-horizontal_small" type="text" name="input23" label="Related to" value="{!v.focusDetails.finalWrapper.fwCurrentState}" maxlength="250" required="true"/>
+                                </div>
+                                
+                            </div>
+                            <div class="slds-form__item" role="listitem">
+                                            <div class="slds-form-element slds-form-element_horizontal ">
+                                                <label class="slds-form-element__label" for="single-form-element-id-02"></label>
+                                                <div class="slds-form-element__control slds-float_right">
+                                                    <lightning:button label="Cancel"  class="slds-m-left_x-small"></lightning:button> 
+                                                    <lightning:button label="Save" variant="brand"  class="slds-m-left_x-small"></lightning:button>  
+                                                </div>
+                                            </div>
+                            </div>
+                        </div>
+                        <!--   </div>-->
+        <div>
+          StringValue1---->  {!v.StringValue1}
+        <c:TCT_Combobox customPicklistValues="{!v.statusPicklistVal}" stringField="{!v.StringValue1}"> </c:TCT_Combobox>
+        </div>
+                    </div>
+    
+</aura:component>

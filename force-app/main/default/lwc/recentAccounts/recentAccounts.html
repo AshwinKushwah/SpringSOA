@@ -1,0 +1,9 @@
+<template>
+    <lightning-card title="Recent Account Names" icon-name="custom:custom63">
+      <template for:each={accountList} for:item="acc">
+                <p key={acc.id}>
+                     {acc.Name}
+                </p>
+            </template>    
+    </lightning-card>
+</template>

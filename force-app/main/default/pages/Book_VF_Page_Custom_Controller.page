@@ -1,0 +1,49 @@
+<apex:page controller="BookController">
+    <apex:dataTable value="{!books}" var="b" border="1" cellpadding="5px">
+        <apex:column >
+            <apex:facet name="header">Book Name</apex:facet>
+            <apex:outputLink value="https://books.google.com/" target="new">
+                 <apex:outputText value="{!b.Title__c }"></apex:outputText>
+                 <apex:param name="q" value="{!b.Title__c }"/>
+            </apex:outputLink>
+        </apex:column>
+        
+        
+        <apex:column >
+            <apex:facet name="header">Author</apex:facet>
+            <apex:outputText value="{!b.Author__c }"></apex:outputText>
+        </apex:column>
+        
+        <apex:column >
+            <apex:facet name="header">Available</apex:facet>
+            <apex:outputText value="{!b.Available__c}"></apex:outputText>
+        </apex:column>
+        
+  
+        
+    </apex:dataTable>
+    
+    <apex:form >
+        <apex:inputHidden value="{!startingFrom}"/>
+        <apex:panelGrid columns="2" cellpadding="2px" style="font-size:12px;">
+        	<apex:commandLink action="{!previous}" value="Previous"/>
+            <apex:commandLink action="{!next}" value="Next"/>
+        </apex:panelGrid>
+    </apex:form>
+    
+    <apex:form >
+    	<apex:panelGrid columns="2">
+        	<apex:outputText value="Book Name"/>
+            <apex:inputField value="{!book.Title__c}"/>
+            
+            <apex:outputText value="Author"/>
+            <apex:inputField value="{!book.Author__c}"/>
+            
+            <apex:outputText value="Available"/>
+            <apex:inputField value="{!book.Available__c}"/>
+            
+            <apex:commandButton value="Save Book Now!" action="{!save}"/>
+        </apex:panelGrid>
+    </apex:form>
+    
+</apex:page>

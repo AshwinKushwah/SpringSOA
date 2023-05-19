@@ -1,0 +1,4 @@
+<design:component label="testAura">
+    <design:attribute name="isCreateNewClientAcc" label="Boolean value"/>
+     <design:attribute name="recID" Label="Is rec"/>
+</design:component>

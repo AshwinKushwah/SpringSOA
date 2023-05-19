@@ -1,0 +1,22 @@
+<apex:page standardController="Book__c" extensions="Book_Controller_Extension">
+    <apex:form >
+        <apex:pageBlock >
+            
+            <apex:pageBlockSection title="Book Details">
+                Hello 
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Create a new Book">
+            </apex:pageBlockSection>
+            
+            <apex:panelGrid columns="2">
+                <apex:outputText value="Name"></apex:outputText>
+                <apex:inputField value="{!Book__c.Title__c}" />
+            </apex:panelGrid>
+            
+        
+        <apex:pageBlockButtons >
+            <apex:commandButton action="{!save}" value="Save this Book"/>
+        </apex:pageBlockButtons>
+            </apex:pageBlock>
+       </apex:form>
+</apex:page>

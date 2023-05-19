@@ -1,0 +1,96 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="displayOption" type="Boolean" default="true"/>
+     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="selectedValue" type="String" default="SelectedValue"/>
+    <div class="slds-form-element">
+<label class="slds-form-element__label" for="combobox-id-3">Relate To</label>
+<div class="slds-form-element__control">
+<div class="slds-combobox_container">
+<div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open" aria-expanded="true" aria-haspopup="listbox" role="combobox">
+<div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+<lightning:input type="text" label="Red" name="red" aura:id="light_input" value="{!v.selectedValue}"/>
+
+    <!-- <input type="text" class="slds-input slds-combobox__input slds-has-focus" id="combobox-id-3" aria-controls="listbox-id-4" autocomplete="off" role="textbox" placeholder="Select an Option…" readonly="" /> -->
+<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+<!-- <img src="utility:down" class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+	
+</img> -->
+</span>
+</div>
+  <aura:if isTrue="{!v.displayOption}">   
+<div id="listbox-id-4" class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid" role="listbox">
+<ul class="slds-listbox slds-listbox_vertical" role="presentation">
+<li role="presentation" class="slds-listbox__item">
+<div id="option1"   class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option">
+<span class="slds-media__figure slds-listbox__option-icon"></span>
+<span class="slds-media__body"> <!-- class="slds-hide runtime will be applied -->
+    <lightning:icon aura:id="optionIcon1" class="slds-icon slds-icon--check slds-icon--x-small slds-icon-text-default slds-m-right--x-small slds-shrink-none" iconName="utility:check" size="xx-small" />
+<span class="slds-truncate" title="Accounts" aura:id="button1" onclick="{!c.handleClick}">Accounts</span>
+</span>
+</div>
+</li>
+<li role="presentation" class="slds-listbox__item">
+<div id="option2" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option">
+<span class="slds-media__figure slds-listbox__option-icon"></span>
+<span class="slds-media__body">
+<span class="slds-truncate" title="Reports">Reports</span>
+</span>
+</div>
+</li>
+<li role="presentation" class="slds-listbox__item">
+<div id="option3" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option">
+<span class="slds-media__figure slds-listbox__option-icon"></span>
+<span class="slds-media__body">
+<span class="slds-truncate" title="Contacts">Contacts</span>
+</span>
+</div>
+</li>
+<li role="presentation" class="slds-listbox__item">
+<div id="option4" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option">
+<span class="slds-media__figure slds-listbox__option-icon"></span>
+<span class="slds-media__body">
+<span class="slds-truncate" title="Files">Files</span>
+</span>
+</div>
+</li>
+<li role="presentation" class="slds-listbox__item">
+<div id="option5" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option">
+<span class="slds-media__figure slds-listbox__option-icon"></span>
+<span class="slds-media__body">
+<span class="slds-truncate" title="Groups">Groups</span>
+</span>
+</div>
+</li>
+<li role="presentation" class="slds-listbox__item">
+<div id="option6" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option">
+<span class="slds-media__figure slds-listbox__option-icon"></span>
+<span class="slds-media__body">
+<span class="slds-truncate" title="Leads">Leads</span>
+</span>
+</div>
+</li>
+<li role="presentation" class="slds-listbox__item">
+<div id="option7" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option">
+<span class="slds-media__figure slds-listbox__option-icon"></span>
+<span class="slds-media__body">
+<span class="slds-truncate" title="Notes">Notes</span>
+</span>
+</div>
+</li>
+<li role="presentation" class="slds-listbox__item">
+<div id="option8" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option">
+<span class="slds-media__figure slds-listbox__option-icon"></span>
+<span class="slds-media__body">
+<span class="slds-truncate" title="Groups">Groups</span>
+</span>
+</div>
+</li>
+</ul>
+</div>
+</aura:if>
+</div>
+</div>
+</div>
+</div>
+
+</aura:component>

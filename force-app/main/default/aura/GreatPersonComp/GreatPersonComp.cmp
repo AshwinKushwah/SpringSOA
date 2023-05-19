@@ -1,0 +1,9 @@
+<aura:component >
+	<aura:attribute name='userName' type='String' default='Abhijeet' />
+    <aura:attribute name='testAttribute' type='String' default='Test'/>
+                                                           
+	<p>Hello {!v.userName}!</p>
+    <p>Kya Hal Chal {!v.testAttribute}</p>
+    
+    <p>Maje Me Hai {!v.testAttribute}</p>
+</aura:component>

@@ -1,0 +1,6 @@
+<apex:page standardController="Book__c">
+    <apex:includeScript value="{!$Resource.myscript}"/>
+    <apex:detail inlineEdit="true"
+                relatedList="false"
+                oncomplete="themessage()"/>
+</apex:page>

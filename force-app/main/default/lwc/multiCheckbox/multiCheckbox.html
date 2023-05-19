@@ -1,0 +1,11 @@
+<template>
+    <lightning-card>
+        <lightning-checkbox-group name="Checkbox Group"
+                                label="Checkbox Group"
+                                options={domains}
+                                value={value}
+                                onchange={handleChange}>
+        </lightning-checkbox-group>
+    </lightning-card>
+    <p>Selected Values are: {selectedValues}</p>
+</template>

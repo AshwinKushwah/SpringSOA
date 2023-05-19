@@ -1,0 +1,6 @@
+<aura:documentation> <aura:description>
+Some Description about SimpleOne Component! </aura:description>
+<aura:example name="ExampleName" ref="c:simpleOne"
+label="Label">
+Example Description </aura:example>
+</aura:documentation>
